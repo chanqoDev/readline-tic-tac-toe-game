@@ -27,11 +27,18 @@ const printBoard = (board) => {
 }; 
 
 //  > check for a winner :  by examining the rows, columns and diagonals of the board 
-const checkWinner = (board, player) => { }; 
+const checkWinner = (board, player) => { 
+    for (let i = 0; i < 3; i++) {
+        if (board[i].every(cell => cell === player) || board.every(cell => cell === player)) return true; 
+    }
+    if (board[0][0] === player && board[1][1] === player && board[2][2] === player || board[0][2] === player && board[1][1] === player && board[2][0] === player) return true;
+    return false; 
+}; 
 
-// isBoardFull   > checks to see if player has won
-
-const isBoardFull = (board) => { }; 
+// isBoardFull, check to see if player has won
+const isBoardFull = (board) => { 
+    return board.every(row => row.every(cell => cell !== ' ')); 
+}; 
 
 const ticTacToe = () => {
     const board = [
@@ -39,7 +46,7 @@ const ticTacToe = () => {
   [' ', ' ', ' '],
   [' ', ' ', ' ']
     ];
-    let currentPlayer = 'X';
+let currentPlayer = 'X';
     
 
 // player enters a move :  checks if the move is valid, update the board, and checks for a winner or a draw.
@@ -54,7 +61,7 @@ const makeMove = (move) => {
             printBoard(board); 
             console.log(`Player ${currentPlayer} wins!`);
             rl.close();
-            // check if board is full then its a draw 
+            
         } else if (isBoardFull(board)) {
             printBoard(board); 
             console.log('Its a draw'); 
