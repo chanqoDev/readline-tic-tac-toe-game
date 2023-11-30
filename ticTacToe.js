@@ -52,6 +52,16 @@ let currentPlayer = 'X';
 // player enters a move :  checks if the move is valid, update the board, and checks for a winner or a draw.
 const makeMove = (move) => { 
     const [row, col] = move.split(' ').map(Number); 
+ 
+ 
+    // Validate row and col values
+    if (isNaN(row) || isNaN(col) || row < 0 || row >= board.length || col < 0 || col >= board[0].length) {
+        // current issue is that the console.log gets deleted if invalid ranges are passed in since playerTurn() is invoking a clear.console inside
+        console.log('Invalid row or column. Please enter valid numerical values within the range.');
+        playerTurn();
+        return; 
+    } 
+
 
     if (board[row][col] === ' ') {
         board[row][col] = currentPlayer; 
@@ -82,7 +92,6 @@ const playerTurn = () => {
   printBoard(board); 
   rl.question(`Player ${currentPlayer}, enter your move (row col): `, makeMove);
 }
-
   playerTurn();
 }
 
