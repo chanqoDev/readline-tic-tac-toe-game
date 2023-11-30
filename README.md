@@ -1,6 +1,8 @@
 # readline-tic-tac-toe-game
 
+## Readline DOCS
 
+ [Node:Readline docs] (https://nodejs.org/api/readline.html#readline)
 Initialize a Node.js Project:
 
 
