@@ -17,3 +17,5 @@ Run the Tic-tac-toe game
 
 
 Create your tic-tac-toe game using Node.js and the readline module:
+
+![Game on Terminal](assets/Screenshot%202023-11-30%20at%2012.08.53%20AM.png)
